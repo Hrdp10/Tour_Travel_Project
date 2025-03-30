@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WonderLust - Explore The World</title>
+    <link rel="stylesheet" href="homestyles.css">
+    <style>
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 98%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: white;
+            color: black;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            padding-top: 70px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            margin-right: auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 50px;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+        }
+
+        nav ul li {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-align: center;
+            position: relative;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: #facc15;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo">WonderLust</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>                
+                <li><a href="package.html">Packages</a></li>
+                <li><a href="register.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Background Slideshow -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Explore the World with WonderLust</h1>
+            <p>Find the best deals on flights, hotels, and travel packages.</p>
+            <a href="#" class="btn explore-btn">Explore Now</a>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="destinations">
+        <h2>Popular Destinations</h2>
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="https://cdn.pixabay.com/photo/2022/03/04/23/59/mountain-7048171_1280.jpg" alt="Kashmir">
+                <h3>Kashmir</h3>
+                <p>Experience the romance and charm of Kashmir.</p>
+            </div>
+            <div class="destination-card">
+                <img src="https://cdn.pixabay.com/photo/2020/10/29/06/11/mountains-5695323_1280.jpg" alt="Sikkim">
+                <h3>Sikkim</h3>
+                <p>Relax on the serene beaches of Sikkim</p>
+            </div>
+            <div class="destination-card">
+                <img src="https://cdn.pixabay.com/photo/2023/12/11/22/28/waterfall-8444585_1280.jpg" alt="Meghalaya">
+                <h3>Meghalaya</h3>
+                <p>Luxury overwater villas and stunning ocean views.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 WonderLust | Designed for Travelers</p>
+    </footer>
+</body>
+</html>

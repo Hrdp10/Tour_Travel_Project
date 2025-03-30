@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - WonderLust</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="confirmation.css">
+</head>
+<body>
+    <header>
+        <div class="logo">WonderLust</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="package.html">Packages</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="confirmation-container">
+        <div class="success-animation">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+        
+        <h1>Booking Confirmed!</h1>
+        <p class="confirmation-message">Thank you for booking with WonderLust. Your adventure awaits!</p>
+        
+        <div class="confirmation-details">
+            <h2>Booking Details</h2>
+            <div class="detail-row">
+                <span class="label">Confirmation Number:</span>
+                <span class="value" id="confirmation-number">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Package:</span>
+                <span class="value" id="package-name">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Travel Date:</span>
+                <span class="value" id="travel-date">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Number of Travelers:</span>
+                <span class="value" id="travelers-count">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Total Amount Paid:</span>
+                <span class="value" id="total-amount">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Payment Method:</span>
+                <span class="value" id="payment-method">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Payment Date:</span>
+                <span class="value" id="payment-date">Loading...</span>
+            </div>
+        </div>
+        
+        <div class="traveler-info">
+            <h2>Traveler Information</h2>
+            <div class="detail-row">
+                <span class="label">Name:</span>
+                <span class="value" id="traveler-name">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Email:</span>
+                <span class="value" id="traveler-email">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Phone:</span>
+                <span class="value" id="traveler-phone">Loading...</span>
+            </div>
+        </div>
+        
+        <div class="next-steps">
+            <h2>What's Next?</h2>
+            <ol>
+                <li>Check your email for a detailed itinerary</li>
+                <li>Prepare necessary travel documents</li>
+                <li>Pack according to your destination's weather</li>
+                <li>Contact us if you have any questions</li>
+            </ol>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="#" class="btn primary" id="download-btn">Download Confirmation</a>
+            <a href="home.html" class="btn secondary">Return to Home</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WonderLust | Designed for Travelers</p>
+    </footer>
+    
+    <script src="confirmation.js"></script>
+</body>
+</html>

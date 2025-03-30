@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - WonderLust</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="admin-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">WonderLust</div>
+        <nav>
+            <ul>
+                <li><a href="home.html" target="_blank">View Site</a></li>
+                <li class="dropdown">
+                    <a href="#" id="admin-dropdown">Admin <i class="fas fa-user-shield"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#" id="logout-btn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <div class="nav-section">
+                    <h3>Dashboard</h3>
+                    <a href="#overview" class="active"><i class="fas fa-tachometer-alt"></i> Overview</a>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Management</h3>
+                    <a href="#packages"><i class="fas fa-box"></i> Packages</a>
+                    <a href="#bookings"><i class="fas fa-calendar-check"></i> Bookings</a>
+                    <a href="#users"><i class="fas fa-users"></i> Users</a>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Settings</h3>
+                    <a href="#settings"><i class="fas fa-cog"></i> Site Settings</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-content">
+            <!-- Overview Section -->
+            <section id="overview-section" class="admin-section">
+                <h2>Dashboard Overview</h2>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon bookings-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Bookings</h3>
+                            <p id="total-bookings">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon users-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Users</h3>
+                            <p id="total-users">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon packages-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Active Packages</h3>
+                            <p id="active-packages">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon revenue-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Revenue</h3>
+                            <p id="total-revenue">₹0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <h3>Recent Bookings</h3>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Package</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-bookings-table">
+                                <!-- Recent bookings will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Packages Section -->
+            <section id="packages-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Manage Packages</h2>
+                    <button id="add-package-btn" class="btn primary"><i class="fas fa-plus"></i> Add New Package</button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Package Name</th>
+                                <th>Destination</th>
+                                <th>Duration</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="packages-table">
+                            <!-- Packages will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Package Modal -->
+                <div id="package-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3 id="package-modal-title">Add New Package</h3>
+                        <form id="package-form">
+                            <input type="hidden" id="package-id">
+                            <div class="form-group">
+                                <label for="package-name">Package Name</label>
+                                <input type="text" id="package-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="package-destination">Destination</label>
+                                <input type="text" id="package-destination" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="package-duration">Duration (days)</label>
+                                    <input type="number" id="package-duration" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="package-price">Price (₹)</label>
+                                    <input type="number" id="package-price" min="0" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="package-description">Description</label>
+                                <textarea id="package-description" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="package-image">Image URL</label>
+                                <input type="text" id="package-image" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="package-status">Status</label>
+                                <select id="package-status" required>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn secondary" id="cancel-package">Cancel</button>
+                                <button type="submit" class="btn primary">Save Package</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Bookings Section -->
+            <section id="bookings-section" class="admin-section">
+                <h2>Manage Bookings</h2>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="booking-status-filter">Status</label>
+                        <select id="booking-status-filter">
+                            <option value="all">All</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="pending">Pending</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="booking-search">Search</label>
+                        <input type="text" id="booking-search" placeholder="Search by ID or name...">
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Package</th>
+                                <th>Customer</th>
+                                <th>Travel Date</th>
+                                <th>Travelers</th>
+                                <th>Total Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookings-table">
+                            <!-- Bookings will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Booking Modal -->
+                <div id="booking-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Update Booking Status</h3>
+                        <form id="booking-form">
+                            <input type="hidden" id="booking-id">
+                            <div class="form-group">
+                                <label for="booking-status">Status</label>
+                                <select id="booking-status" required>
+                                    <option value="confirmed">Confirmed</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-notes">Notes</label>
+                                <textarea id="booking-notes" rows="3"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn secondary" id="cancel-booking">Cancel</button>
+                                <button type="submit" class="btn primary">Update Status</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Users Section -->
+            <section id="users-section" class="admin-section">
+                <h2>Manage Users</h2>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="user-role-filter">Role</label>
+                        <select id="user-role-filter">
+                            <option value="all">All</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="user-search">Search</label>
+                        <input type="text" id="user-search" placeholder="Search by name or email...">
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Role</th>
+                                <th>Bookings</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table">
+                            <!-- Users will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- User Modal -->
+                <div id="user-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3 id="user-modal-title">Edit User</h3>
+                        <form id="user-form">
+                            <input type="hidden" id="user-id">
+                            <div class="form-group">
+                                <label for="user-name">Full Name</label>
+                                <input type="text" id="user-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="user-email">Email</label>
+                                <input type="email" id="user-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="user-phone">Phone</label>
+                                <input type="tel" id="user-phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="user-role">Role</label>
+                                <select id="user-role" required>
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn secondary" id="cancel-user">Cancel</button>
+                                <button type="submit" class="btn primary">Save User</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Settings Section -->
+            <section id="settings-section" class="admin-section">
+                <h2>Site Settings</h2>
+                
+                <div class="settings-card">
+                    <h3>General Settings</h3>
+                    <form id="settings-form">
+                        <div class="form-group">
+                            <label for="site-name">Site Name</label>
+                            <input type="text" id="site-name" value="WonderLust">
+                        </div>
+                        <div class="form-group">
+                            <label for="site-tagline">Tagline</label>
+                            <input type="text" id="site-tagline" value="Designed for Travelers">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Contact Email</label>
+                            <input type="email" id="contact-email" value="contact@wonderlust.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-phone">Contact Phone</label>
+                            <input type="tel" id="contact-phone" value="+91 1234567890">
+                        </div>
+                        <button type="submit" class="btn primary">Save Settings</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin-dashboard.js"></script>
+</body>
+</html>

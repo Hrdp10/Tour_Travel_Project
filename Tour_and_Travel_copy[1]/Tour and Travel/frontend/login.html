@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="loginstyles.css">
+    <title>Login</title>
+   <style>
+    /* General Styles for login box */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Background Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('https://source.unsplash.com/1600x900/?travel,nature') no-repeat center center/cover;
+}
+
+/* Login Form Container */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 350px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Heading */
+h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Buttons */
+button {
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Links */
+a {
+    display: block;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #f8d210;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+        /* <link rel="stylesheet" href="style.css"> */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #b0afaf;
+            flex-direction: column;
+        }
+        .container {
+            background: rgb(95, 222, 228);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(145, 69, 69, 0.2);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+
+
+        /* Below is for Upper part of login page like logo name and navigation bar */
+
+         /* Styling for all Nav Links (Home, Packages, Login, Signup) */
+         nav ul li a {
+        color: black;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 12px 25px; /* Equal padding for all items */
+        border-radius: 5px;
+        text-align: center;
+        position: relative;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: auto; /* Moves the logo to the left */
+      }
+      header {
+        position: fixed; /* Keeps navbar at the top */
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Centers navbar */
+        align-items: center;
+        padding: 15px 50px;
+        background-color: white; /* Ensure visibility */
+        color: black;
+        z-index: 1000; /* Keeps navbar above other content */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow */
+      }
+    
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1; /* Ensures nav takes full available space */
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 50px; /* Even spacing */
+        padding: 0;
+        margin: 0;
+        align-items: center; /* Aligns all items */
+      }
+       /* Hover effect with underline animation */
+       nav ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease-in-out;
+      }
+      nav ul li a:hover {
+        color: #facc15;
+      }
+
+      nav ul li a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+      
+    </style >
+
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="dashboard.html" method="POST">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <a href="register.html">Don't have an account? Signup</a>
+        <a href="home.html">Back to Home</a>
+    </div>
+
+    <header>
+        <div class="logo">WonderLust</div>
+        <nav>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="package.html">Packages</a></li>
+           
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+      </header>
+</body>
+</html>

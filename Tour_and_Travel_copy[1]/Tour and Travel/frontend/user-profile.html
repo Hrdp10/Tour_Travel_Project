@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - WonderLust</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="user-profile.css">
+</head>
+<body>
+    <header>
+        <div class="logo">WonderLust</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="package.html">Packages</a></li>
+                <li class="dropdown">
+                    <a href="#" id="profile-dropdown">My Account ▼</a>
+                    <div class="dropdown-content">
+                        <a href="user-profile.html">Profile</a>
+                        <a href="#bookings">My Bookings</a>
+                        <a href="#" id="logout-btn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <span id="user-initial"></span>
+                </div>
+                <h3 id="display-name">User Name</h3>
+                <p id="display-email">user@email.com</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#profile" class="active">Profile</a>
+                <a href="#bookings">My Bookings</a>
+                <a href="#settings">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="profile-section" class="dashboard-section">
+                <h2>My Profile</h2>
+                <div class="profile-card">
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <button type="submit" class="btn primary">Update Profile</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="bookings-section" class="dashboard-section">
+                <h2>My Bookings</h2>
+                <div class="bookings-list" id="bookings-container">
+                    <!-- Bookings will be populated here -->
+                </div>
+            </section>
+
+            <section id="settings-section" class="dashboard-section">
+                <h2>Account Settings</h2>
+                <div class="settings-card">
+                    <h3>Change Password</h3>
+                    <form id="password-form">
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <input type="password" id="confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn primary">Change Password</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="user-profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Tour_and_Travel_copy[1]",
+		"CodeGPT.apiKey": "CodeGPT Plus Beta"
+	}
+}

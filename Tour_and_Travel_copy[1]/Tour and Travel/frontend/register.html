@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | WonderLust</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="navbar.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      header {
+        position: fixed; /* Keeps navbar at the top */
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Centers navbar */
+        align-items: center;
+        padding: 15px 50px;
+        background-color: white; /* Ensure visibility */
+        color: black;
+        z-index: 1000; /* Keeps navbar above other content */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow */
+      }
+
+      body {
+        padding-top: 70px; /* Prevents content from hiding under navbar */
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: auto; /* Moves the logo to the left */
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1; /* Ensures nav takes full available space */
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 50px; /* Even spacing */
+        padding: 0;
+        margin: 0;
+        align-items: center; /* Aligns all items */
+      }
+
+      nav ul li {
+        display: flex;
+        align-items: center;
+      }
+
+      /* Styling for all Nav Links (Home, Packages, Login, Signup) */
+      nav ul li a {
+        color: black;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 12px 25px; /* Equal padding for all items */
+        border-radius: 5px;
+        text-align: center;
+        position: relative;
+        transition: color 0.3s ease-in-out;
+      }
+
+      /* Hover effect with underline animation */
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      nav ul li a:hover {
+        color: #facc15;
+      }
+
+      nav ul li a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+      }
+
+      .register-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        text-align: center;
+        margin-top: 100px;
+      }
+
+      h2 {
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .input-group {
+        position: relative;
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 12px 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+      }
+
+      .input-group i {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #aaa;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #4facfe;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #00c6ff;
+      }
+
+      .login-link {
+        margin-top: 15px;
+        font-size: 14px;
+      }
+
+      .login-link a {
+        text-decoration: none;
+        color: #4facfe;
+        font-weight: bold;
+      }
+
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 14px;
+        display: none;
+      }
+      .password-strength-meter {
+    height: 5px;
+    background-color: #ddd;
+    border-radius: 3px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.password-strength-indicator {
+    height: 100%;
+    width: 0;
+    background-color: #ddd;
+    transition: all 0.3s ease;
+}
+
+.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.success-message {
+    color: green;
+    display: none;
+    margin-top: 10px;
+}
+
+.input-group.error input {
+    border-color: #ff4444;
+}
+
+.password-requirements {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    text-align: left;
+    padding-left: 40px;
+}
+
+    </style>
+    <script>
+      // Add these validation functions at the start of your script section
+function validatePassword(password) {
+    // Password should be at least 8 characters long and contain at least one number, 
+    // one uppercase letter, and one special character
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+}
+
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function validateName(name) {
+    // Name should be at least 2 characters long and contain only letters and spaces
+    const nameRegex = /^[A-Za-z\s]{2,}$/;
+    return nameRegex.test(name);
+}
+
+// Update the registerUser function
+async function registerUser(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const errorMessage = document.getElementById("error-message");
+    const submitButton = document.querySelector('button[type="submit"]');
+    
+    // Reset error message
+    errorMessage.style.display = "none";
+    
+    // Validate name
+    if (!validateName(name)) {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "Name should contain only letters and be at least 2 characters long";
+        return;
+    }
+    
+    // Validate email
+    if (!validateEmail(email)) {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "Please enter a valid email address";
+        return;
+    }
+    
+    // Validate password
+    if (!validatePassword(password)) {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "Password must be at least 8 characters long and contain at least one number, one uppercase letter, and one special character";
+        return;
+    }
+    
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "Passwords do not match!";
+        return;
+    }
+    
+    try {
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Registering...';
+        
+        const response = await fetch("http://localhost:5000/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password }),
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            // Show success message
+            errorMessage.style.display = "block";
+            errorMessage.style.color = "green";
+            errorMessage.innerText = "Registration successful! Redirecting to login...";
+            
+            // Redirect after a short delay
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 2000);
+        } else {
+            throw new Error(data.error || 'Registration failed');
+        }
+    } catch (error) {
+        errorMessage.style.display = "block";
+        errorMessage.style.color = "red";
+        errorMessage.innerText = error.message;
+    } finally {
+        // Reset button state
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Register';
+    }
+}
+
+// Add password strength indicator
+function updatePasswordStrength() {
+    const password = document.getElementById("password").value;
+    const strengthIndicator = document.getElementById("password-strength");
+    
+    if (password.length === 0) {
+        strengthIndicator.style.width = "0%";
+        strengthIndicator.style.backgroundColor = "#ddd";
+    } else if (password.length < 8) {
+        strengthIndicator.style.width = "33%";
+        strengthIndicator.style.backgroundColor = "#ff4444";
+    } else if (validatePassword(password)) {
+        strengthIndicator.style.width = "100%";
+        strengthIndicator.style.backgroundColor = "#00C851";
+    } else {
+        strengthIndicator.style.width = "66%";
+        strengthIndicator.style.backgroundColor = "#ffbb33";
+    }
+}
+
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">WonderLust</div>
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="package.html">Packages</a></li>
+         
+          <li><a href="register.html">Sign Up</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="register-container">
+      <h2>Create Your Account</h2>
+      <form onsubmit="registerUser(event)">
+
+<!-- Add this after the password input group -->
+<div class="password-requirements">
+  Password must contain:
+  <ul>
+      <li>At least 8 characters</li>
+      <li>One uppercase letter</li>
+      <li>One number</li>
+      <li>One special character (@$!%*?&)</li>
+  </ul>
+</div>
+<div class="password-strength-meter">
+  <div id="password-strength" class="password-strength-indicator"></div>
+</div>
+
+<!-- Add this before the submit button -->
+<div id="success-message" class="success-message"></div>
+
+
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="name" placeholder="Full Name" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="email" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+         
+           <input
+    type="password"
+    id="password"
+    placeholder="Password"
+    required
+    onkeyup="updatePasswordStrength()"
+            />
+
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+            required
+          />
+        </div>
+        <p id="error-message" class="error-message"></p>
+        <button type="submit">Register</button>
+        <div class="login-link">
+          Already have an account? <a href="login.html">Login here</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

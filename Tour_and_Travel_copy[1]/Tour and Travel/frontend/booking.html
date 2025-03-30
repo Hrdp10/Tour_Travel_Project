@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Package - WonderLust</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+    <header>
+        <div class="logo">WonderLust</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="package.html">Packages</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="booking-container">
+        <h2>Book Your Package</h2>
+        <form class="booking-form">
+            <div class="package-details">
+                <h3>Package Details</h3>
+                <p id="selected-package">Selected Package: <span>Loading...</span></p>
+                <p id="package-price">Price: <span>Loading...</span></p>
+            </div>
+
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="travelers">Number of Travelers</label>
+                    <input type="number" id="travelers" min="1" value="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="travel-date">Preferred Travel Date</label>
+                    <input type="date" id="travel-date" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="special-requests">Special Requests (Optional)</label>
+                <textarea id="special-requests" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Confirm Booking</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WonderLust | Designed for Travelers</p>
+    </footer>
+    
+    <!-- Make sure the script is at the end of the body -->
+    <script src="booking.js"></script>
+</body>
+</html>
